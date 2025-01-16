@@ -37,6 +37,8 @@ export const GET = async (
     );
   }
 
+  console.log(res.status, res.data);
+
   const invoiceDetails = res.data?.data as Invoice;
 
   const qrCodeDataUrl = await generateQRWithLogo(invoiceDetails.link);

@@ -59,11 +59,17 @@ export const InvoicePDF = ({
               {invoiceDetails?.name}
             </Text>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            <Image
-              style={invoiceStyles.logo}
-              src={invoiceDetails.logoUrl}
-              cache={false}
-            />
+            {invoiceDetails.logoUrl ? (
+              <Image
+                style={invoiceStyles.logo}
+                src={invoiceDetails.logoUrl}
+                cache={false}
+              />
+            ) : (
+              <View
+                style={{ ...invoiceStyles.logo, backgroundColor: "#EFECEC" }}
+              />
+            )}
           </View>
 
           <View style={invoiceStyles.meta} wrap={true}>
