@@ -1,33 +1,45 @@
-import { StyleSheet } from "@react-pdf/renderer";
+import { Font, StyleSheet } from "@react-pdf/renderer";
+import path from "path";
+// import path from "path";
 
-// Font.register({
-//   family: "Outfit",
-//   fonts: [
-//     { src: "../assets/fonts/Outfit-Regular.ttf", fontWeight: 400 },
-//     { src: "../assets/fonts/Outfit-Medium.ttf", fontWeight: 600 },
-//   ],
-// });
+// console.log(path.join(process.cwd(), "public/fonts/Monda-SemiBold.ttf"));
 
-// Font.register({
-//   family: "BellotaText",
-//   src: "../assets/fonts/BellotaText-Bold.ttf",
-//   fontWeight: 700,
-// });
+export function registerFonts() {
+  Font.register({
+    family: "Outfit",
+    fonts: [
+      {
+        src: path.join(process.cwd(), "public/fonts/Outfit-Regular.ttf"),
+        fontWeight: 400,
+      },
+      {
+        src: path.join(process.cwd(), "public/fonts/Outfit-Medium.ttf"),
+        fontWeight: 600,
+      },
+    ],
+  });
 
-// Font.register({
-//   family: "Monda",
-//   src: "../assets/fonts/Monda-SemiBold.ttf",
-//   fontWeight: 600,
-// });
+  Font.register({
+    family: "BellotaText",
+    src: path.join(process.cwd(), "public/fonts/BellotaText-Bold.ttf"),
+    fontWeight: 700,
+  });
+
+  Font.register({
+    family: "Monda",
+    src: path.join(process.cwd(), "public/fonts/Monda-SemiBold.ttf"),
+    fontWeight: 600,
+  });
+}
 
 export const pdfContainer = StyleSheet.create({
   page: {
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     marginTop: 32,
     marginBottom: 50,
   },
   main: {
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     marginHorizontal: 24,
     marginBottom: 50,
   },
