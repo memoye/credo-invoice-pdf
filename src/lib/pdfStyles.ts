@@ -102,11 +102,12 @@ export const invoiceStyles = StyleSheet.create({
     paddingLeft: 80,
   },
   qrCodeContainer: {
-    borderWidth: 2,
-    borderColor: "#0536A3",
+    borderWidth: 1,
+    // borderColor: "#0536A3",
+    borderColor: "#0765FF",
     width: 160,
     height: 150,
-    borderRadius: 10,
+    borderRadius: 5,
   },
   qrCode: {
     padding: 2,

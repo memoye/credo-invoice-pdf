@@ -1,4 +1,7 @@
+import QRCode from "qrcode";
+import { Canvas, loadImage } from "canvas";
 import { Installment, Invoice } from "./types";
+import path from "path";
 
 const idealViewportWidth = 1440;
 const maxViewportWidth = 1920;
@@ -18,6 +21,44 @@ export const scaleValue = (
 //     const viewportWidth = Math.min(window.innerWidth, maxViewportWidth);
 //     return value * (viewportWidth / idealViewportWidth);
 // };
+
+export async function generateQRWithLogo(
+  url: string
+  // logoPath: string
+): Promise<string> {
+  // Create a canvas
+  const canvas = new Canvas(200, 200);
+  const ctx = canvas.getContext("2d");
+
+  // Generate QR code with a bit more space in center
+  await QRCode.toCanvas(canvas, url, {
+    errorCorrectionLevel: "H", // Use high error correction for logo overlay
+    margin: 1,
+    width: 200,
+    color: {
+      dark: "#0765FF",
+      light: "#FFFFFF",
+    },
+  });
+
+  // Load and draw the logo
+  const logo = await loadImage(
+    path.join(process.cwd(), "public/credo-logo.svg")
+  );
+  const logoSize = canvas.width * 0.2; // Logo size - 20% of QR code size
+  const logoX = (canvas.width - logoSize) / 2;
+  const logoY = (canvas.height - logoSize) / 2;
+
+  // Create white background for logo
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(logoX - 2, logoY - 2, logoSize + 4, logoSize + 4);
+
+  // Draw the logo
+  ctx.drawImage(logo, logoX, logoY, logoSize, logoSize);
+
+  // Convert to data URL
+  return canvas.toDataURL();
+}
 
 export const formatCurrency = (value: number, currency: string) => {
   if (currency) {

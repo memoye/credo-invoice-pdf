@@ -26,7 +26,7 @@ import {
 } from "../lib/utils";
 
 export type InvoicePDFProps = {
-  // qrCode: string;
+  qrCode: string;
   selectedCustomerIndex: number;
   // invoiceDetails: Invoice;
 };
@@ -285,10 +285,10 @@ const invoiceDetails: Invoice = {
 };
 
 export const InvoicePDF = ({
-  // qrCode,
+  qrCode,
+  // invoiceDetails,
   selectedCustomerIndex,
-}: // invoiceDetails,
-InvoicePDFProps) => {
+}: InvoicePDFProps) => {
   const lineItemsTotalValues = calculateLineItemsTotal(
     invoiceDetails?.items ?? []
   );
@@ -296,28 +296,6 @@ InvoicePDFProps) => {
     lineItemsTotalValues?.totalLineItems -
       lineItemsTotalValues?.totalDiscounts +
       lineItemsTotalValues?.totalSurcharges || 0;
-
-  const fetchImageAsBase64 = async (url: string): Promise<string> => {
-    const response = await fetch(url);
-    const blob = await response.blob();
-
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result as string);
-      reader.onerror = reject;
-      reader.readAsDataURL(blob); // Converts the Blob into Base64
-    });
-  };
-
-  // const [base64Logo, setBase64Logo] = useState<string | null>(null);
-
-  // useEffect(() => {
-  //   if (invoiceDetails?.logoUrl) {
-  //     fetchImageAsBase64(invoiceDetails.logoUrl)
-  //       .then((base64) => setBase64Logo(base64))
-  //       .catch((err) => console.error("Failed to fetch logo:", err));
-  //   }
-  // }, [invoiceDetails?.logoUrl]);
 
   return (
     <Document
@@ -334,12 +312,11 @@ InvoicePDFProps) => {
               {invoiceDetails?.name}
             </Text>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            {/* <Image
+            <Image
               style={invoiceStyles.logo}
-              // @ts-expect-error no overload matches this call
-              src={base64Logo}
+              src={invoiceDetails.logoUrl}
               cache={false}
-            /> */}
+            />
           </View>
 
           <View style={invoiceStyles.meta} wrap={true}>
@@ -424,7 +401,7 @@ InvoicePDFProps) => {
               </View>
             </View>
 
-            {/* <>
+            <>
               <View style={invoiceStyles.qrCodeContainer}>
                 <Image
                   style={invoiceStyles.qrCode}
@@ -433,7 +410,7 @@ InvoicePDFProps) => {
                   cache={false}
                 />
               </View>
-            </> */}
+            </>
           </View>
 
           {/* Table */}
