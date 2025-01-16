@@ -16,13 +16,18 @@ import {
   SurchargeIcon,
   TagsIcon,
 } from "../assets/icons";
-import { invoiceStyles } from "../lib/pdfStyles";
+import {
+  installmentTableStyles,
+  invoiceStyles,
+  pdfContainer,
+} from "../lib/pdfStyles";
 import { Invoice } from "../lib/types";
 import {
   calculateLineItemsTotal,
   calculateTax,
   formatNumber,
   formatCurrency,
+  invoiceStatusReducer,
 } from "../lib/utils";
 
 export type InvoicePDFProps = {
@@ -380,6 +385,113 @@ export const InvoicePDF = ({
           <PoweredByCredoLogo />
         </View>
       </Page>
+      {invoiceDetails.installmentType === 0 &&
+        !!invoiceDetails.installments?.length && (
+          <Page size="A4" style={pdfContainer.page}>
+            <View style={pdfContainer.main}>
+              <View
+                style={[installmentTableStyles.heading, { marginBottom: 16 }]}
+              >
+                <Text style={installmentTableStyles.headingTitle}>
+                  {invoiceDetails?.name}
+                </Text>
+
+                <Text style={{ alignSelf: "center", fontSize: 16 }}>
+                  Installment Schedule
+                </Text>
+              </View>
+
+              <View style={installmentTableStyles.tableContainer}>
+                <View style={installmentTableStyles.tableHeader}>
+                  <View style={installmentTableStyles.scheduleCell}>
+                    <Text>Schedule</Text>
+                  </View>
+                  <View style={installmentTableStyles.amountCell}>
+                    <Text>Amount</Text>
+                  </View>
+                  <View style={installmentTableStyles.dueDateCell}>
+                    <Text>Due Date</Text>
+                  </View>
+                  <View style={installmentTableStyles.paymentDateCell}>
+                    <Text>Payment Date</Text>
+                  </View>
+                  <View style={installmentTableStyles.statusCell}>
+                    <Text>Status</Text>
+                  </View>
+                </View>
+
+                {invoiceDetails.installments.map(
+                  (installment, idx: number, arr) => (
+                    <View key={idx} style={installmentTableStyles.tableRow}>
+                      <View style={installmentTableStyles.scheduleCell}>
+                        <Text style={installmentTableStyles.cellText}>
+                          Payment ({idx + 1} of {arr.length})
+                        </Text>
+                      </View>
+
+                      <View style={installmentTableStyles.amountCell}>
+                        <Text style={installmentTableStyles.currency}>
+                          {formatCurrency(
+                            installment.amount,
+                            invoiceDetails?.currency
+                          )}
+                        </Text>
+                      </View>
+
+                      <View style={installmentTableStyles.dueDateCell}>
+                        <Text style={installmentTableStyles.cellText}>
+                          {dateFormat(
+                            installment?.installmentDueDate,
+                            "mmm dd, yyyy "
+                          )}
+                        </Text>
+                      </View>
+
+                      <View style={installmentTableStyles.paymentDateCell}>
+                        <Text style={installmentTableStyles.cellText}>
+                          {installment?.transaction
+                            ? dateFormat(
+                                installment?.transaction?.transactionDate,
+                                "mmm dd, yyyy "
+                              )
+                            : "--"}
+                        </Text>
+                      </View>
+
+                      <View style={installmentTableStyles.statusCell}>
+                        <Text
+                          style={[
+                            installmentTableStyles.cellText,
+                            {
+                              color: invoiceStatusReducer(
+                                installment?.status || 0
+                              ).color,
+                              backgroundColor: invoiceStatusReducer(
+                                installment?.status || 0
+                              ).bg,
+                              textAlign: "center",
+                              paddingHorizontal: 2,
+                              paddingVertical: 4,
+                              borderRadius: 4,
+                            },
+                          ]}
+                        >
+                          {
+                            invoiceStatusReducer(installment?.status || 0)
+                              .displayName
+                          }
+                        </Text>
+                      </View>
+                    </View>
+                  )
+                )}
+              </View>
+            </View>
+            <View style={invoiceStyles.footer}>
+              <PoweredByCredoLogo />
+            </View>
+          </Page>
+        )}
     </Document>
   );
 };
