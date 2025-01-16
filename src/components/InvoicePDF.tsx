@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import {
   Page,
   Text,
@@ -15,27 +15,280 @@ import {
   PoweredByCredoLogo,
   SurchargeIcon,
   TagsIcon,
-} from "./icons.tsx";
-import { invoiceStyles } from "./styles.tsx";
-import { Invoice } from "../../Interfaces/Invoice.ts";
+} from "../assets/icons";
+import { invoiceStyles } from "../lib/pdfStyles";
+import { Invoice } from "../lib/types";
 import {
   calculateLineItemsTotal,
   calculateTax,
   formatNumber,
   formatCurrency,
-} from "../../utils/appUtils.ts";
+} from "../lib/utils";
 
 export type InvoicePDFProps = {
-  qrCode: string;
+  // qrCode: string;
   selectedCustomerIndex: number;
-  invoiceDetails: Invoice;
+  // invoiceDetails: Invoice;
+};
+
+const invoiceDetails: Invoice = {
+  id: 62,
+  name: "360 Produktiviti",
+  invoiceNumber: "000000000062",
+  businessCode: "00000139ZR1667987724",
+  amount: 1407150,
+  paidAmount: 10000,
+  outstandingAmount: 1397150,
+  dueDate: "2025-01-20 00:00:00",
+  invoiceDate: "2025-01-13 00:00:00",
+  merchantRef: "1234",
+  notes: "",
+  currency: "NGN",
+  logoUrl:
+    "https://d1njqin156mvwz.cloudfront.net/1736254765066-download.png?size=18404",
+  allowInstallment: 1,
+  installmentType: 0,
+  enableLateFee: 0,
+  enablePreReminder: 0,
+  preReminderType: "DAILY",
+  preReminderFrequency: 0,
+  enablePostReminder: 0,
+  postReminderType: "DAILY",
+  postReminderFrequency: 0,
+  lateFeeType: "PERCENTILE",
+  lateFeeCharge: 0,
+  lateFeeFrequency: 0,
+  status: 0,
+  items: [
+    {
+      id: 113,
+      description: "",
+      name: "a3 flyer printing",
+      qty: 3,
+      unitPrice: 500000,
+      surcharge: 57150,
+      discountCharge: 150000,
+      discountType: 0,
+      discountTypeValue: 10,
+      discountTag: "Black FRiday",
+      subTotal: 1407150,
+      documents: [],
+      links: [],
+      tags: [],
+      surcharges: [
+        {
+          id: 13,
+          surchargeTypeValue: 3.81,
+          surchargeType: 0,
+          surchargeTag: "WHT",
+        } as any,
+      ],
+    },
+  ],
+  tags: [],
+  documents: [],
+  installments: [
+    {
+      id: 253,
+      amount: 140715,
+      configuredType: 0,
+      configuredValue: 10,
+      outstandingAmount: 130715,
+      installmentDueDate: "2025-01-20 00:00:00",
+      status: 1,
+      upcomingPayment: false,
+      minimumAmount: 0,
+      // @ts-ignore
+      installmentMinimumAmount: 0,
+    },
+    {
+      id: 254,
+      amount: 140715,
+      configuredType: 0,
+      configuredValue: 10,
+      outstandingAmount: 140715,
+      installmentDueDate: "2025-01-20 00:00:00",
+      status: 2,
+      upcomingPayment: false,
+      minimumAmount: 0,
+      // @ts-ignore
+      installmentMinimumAmount: 0,
+    },
+    {
+      id: 255,
+      amount: 140715,
+      configuredType: 0,
+      configuredValue: 10,
+      outstandingAmount: 140715,
+      installmentDueDate: "2025-01-20 00:00:00",
+      status: 2,
+      upcomingPayment: false,
+      minimumAmount: 0,
+      // @ts-ignore
+      installmentMinimumAmount: 0,
+    },
+    {
+      id: 256,
+      amount: 140715,
+      configuredType: 0,
+      configuredValue: 10,
+      outstandingAmount: 140715,
+      installmentDueDate: "2025-01-20 00:00:00",
+      status: 2,
+      upcomingPayment: false,
+      minimumAmount: 0,
+      // @ts-ignore
+      installmentMinimumAmount: 0,
+    },
+    {
+      id: 257,
+      amount: 140715,
+      configuredType: 0,
+      configuredValue: 10,
+      outstandingAmount: 140715,
+      installmentDueDate: "2025-01-20 00:00:00",
+      status: 2,
+      upcomingPayment: false,
+      minimumAmount: 0,
+      // @ts-ignore
+      installmentMinimumAmount: 0,
+    },
+    {
+      id: 258,
+      amount: 703575,
+      configuredType: 0,
+      configuredValue: 50,
+      outstandingAmount: 703575,
+      installmentDueDate: "2025-01-20 00:00:00",
+      status: 2,
+      upcomingPayment: false,
+      minimumAmount: 0,
+      // @ts-ignore
+      installmentMinimumAmount: 0,
+    },
+  ],
+  customers: [
+    {
+      id: 127,
+      customerInvoiceNumber: "000000062127",
+      amount: 1407150,
+      paidAmount: 10000,
+      outstandingAmount: 1397150,
+      status: 0,
+      details: {
+        id: 77,
+        name: "Stephen Ojo",
+        email: "ojostephen247@gmail.com",
+        phoneNumber: "+234 8037395148",
+        // @ts-ignore
+        deliveryAddress: "",
+        postalAddress: "Chief Bright Oridami Street, Lagos, Nigeria",
+      },
+      installments: [
+        {
+          id: 253,
+          amount: 140715,
+          configuredType: 0,
+          configuredValue: 10,
+          outstandingAmount: 130715,
+          installmentDueDate: "2025-01-20 00:00:00",
+          status: 1,
+          upcomingPayment: false,
+          minimumAmount: 0,
+          // @ts-ignore
+          installmentMinimumAmount: 0,
+        },
+        {
+          id: 254,
+          amount: 140715,
+          configuredType: 0,
+          configuredValue: 10,
+          outstandingAmount: 140715,
+          installmentDueDate: "2025-01-20 00:00:00",
+          status: 2,
+          upcomingPayment: false,
+          minimumAmount: 0,
+          // @ts-ignore
+          installmentMinimumAmount: 0,
+        },
+        {
+          id: 255,
+          amount: 140715,
+          configuredType: 0,
+          configuredValue: 10,
+          outstandingAmount: 140715,
+          installmentDueDate: "2025-01-20 00:00:00",
+          status: 2,
+          upcomingPayment: false,
+          minimumAmount: 0,
+          // @ts-ignore
+          installmentMinimumAmount: 0,
+        },
+        {
+          id: 256,
+          amount: 140715,
+          configuredType: 0,
+          configuredValue: 10,
+          outstandingAmount: 140715,
+          installmentDueDate: "2025-01-20 00:00:00",
+          status: 2,
+          upcomingPayment: false,
+          minimumAmount: 0,
+          // @ts-ignore
+          installmentMinimumAmount: 0,
+        },
+        {
+          id: 257,
+          amount: 140715,
+          configuredType: 0,
+          configuredValue: 10,
+          outstandingAmount: 140715,
+          installmentDueDate: "2025-01-20 00:00:00",
+          status: 2,
+          upcomingPayment: false,
+          minimumAmount: 0,
+          // @ts-ignore
+          installmentMinimumAmount: 0,
+        },
+        {
+          id: 258,
+          amount: 703575,
+          configuredType: 0,
+          configuredValue: 50,
+          outstandingAmount: 703575,
+          installmentDueDate: "2025-01-20 00:00:00",
+          status: 2,
+          upcomingPayment: false,
+          minimumAmount: 0,
+          // @ts-ignore
+          installmentMinimumAmount: 0,
+        },
+      ],
+    },
+  ],
+  businessDetails: {
+    name: "British Council Demo",
+    supportPhoneNumber: "+234 8037938921",
+    supportAddress: "Praiseville Garden Estate Phase",
+    supportEmailAddress: "stephen@genuinesols.com",
+    website: "https://www.bc.com",
+    facebookHandle: "spark_lite",
+    twitterHandle: "spark_lite2",
+    instagramHandle: "spark_lite",
+    merchantInfo: {
+      phoneNumber: "+234 8037938900",
+      email: "test2@genuinesols.com",
+      firstName: "Stephen",
+      lastName: "Obi",
+    },
+  },
 };
 
 export const InvoicePDF = ({
-  qrCode,
+  // qrCode,
   selectedCustomerIndex,
-  invoiceDetails,
-}: InvoicePDFProps) => {
+}: // invoiceDetails,
+InvoicePDFProps) => {
   const lineItemsTotalValues = calculateLineItemsTotal(
     invoiceDetails?.items ?? []
   );
@@ -56,15 +309,15 @@ export const InvoicePDF = ({
     });
   };
 
-  const [base64Logo, setBase64Logo] = useState<string | null>(null);
+  // const [base64Logo, setBase64Logo] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (invoiceDetails?.logoUrl) {
-      fetchImageAsBase64(invoiceDetails.logoUrl)
-        .then((base64) => setBase64Logo(base64))
-        .catch((err) => console.error("Failed to fetch logo:", err));
-    }
-  }, [invoiceDetails?.logoUrl]);
+  // useEffect(() => {
+  //   if (invoiceDetails?.logoUrl) {
+  //     fetchImageAsBase64(invoiceDetails.logoUrl)
+  //       .then((base64) => setBase64Logo(base64))
+  //       .catch((err) => console.error("Failed to fetch logo:", err));
+  //   }
+  // }, [invoiceDetails?.logoUrl]);
 
   return (
     <Document
@@ -81,12 +334,12 @@ export const InvoicePDF = ({
               {invoiceDetails?.name}
             </Text>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
-            <Image
+            {/* <Image
               style={invoiceStyles.logo}
               // @ts-expect-error no overload matches this call
               src={base64Logo}
               cache={false}
-            />
+            /> */}
           </View>
 
           <View style={invoiceStyles.meta} wrap={true}>
@@ -171,15 +424,16 @@ export const InvoicePDF = ({
               </View>
             </View>
 
-            <View style={invoiceStyles.qrCodeContainer}>
-              {/* eslint-disable-next-line jsx-a11y/alt-text */}
-              <Image
-                style={invoiceStyles.qrCode}
-                // @ts-expect-error style is required
-                src={{ uri: qrCode }}
-                cache={false}
-              />
-            </View>
+            {/* <>
+              <View style={invoiceStyles.qrCodeContainer}>
+                <Image
+                  style={invoiceStyles.qrCode}
+                  // @ts-expect-error style is required
+                  src={{ uri: qrCode }}
+                  cache={false}
+                />
+              </View>
+            </> */}
           </View>
 
           {/* Table */}
@@ -220,10 +474,8 @@ export const InvoicePDF = ({
                         {item.surcharges.map((surcharge, index) => (
                           <View key={index} style={invoiceStyles.badge}>
                             <SurchargeIcon width={12} height={12} />
-                            <Text
-                              // @ts-expect-error property does not exist
-                              style={{ textTransform: "capitalize" }}
-                            >
+
+                            <Text style={{ textTransform: "capitalize" }}>
                               {surcharge.surchargeTag} (
                               {surcharge?.surchargeTypeValue}
                               {surcharge?.surchargeType === 0 && "%"}) ={" "}
@@ -281,14 +533,13 @@ export const InvoicePDF = ({
                             <LinkIcon width={12} height={12} />
                             <Link
                               style={invoiceStyles.link}
-                              // @ts-expect-error property does not exist
                               src={document.documentUrl}
                             >
                               {document.documentUrl
                                 .split("?")[0]
-                                .split("/")
-                                .pop()
-                                .split("-")
+                                ?.split("/")
+                                ?.pop()
+                                ?.split("-")
                                 .slice(1)
                                 .join("-")}
                             </Link>

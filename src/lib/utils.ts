@@ -1,4 +1,4 @@
-// import {Installment, Invoice} from "../Interfaces/Invoice.ts";
+import { Installment, Invoice } from "./types";
 
 const idealViewportWidth = 1440;
 const maxViewportWidth = 1920;

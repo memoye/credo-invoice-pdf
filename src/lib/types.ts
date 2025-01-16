@@ -60,6 +60,7 @@ export interface ItemDocument {
   id: number;
   url: string;
   name?: string; // Optional name or description of the document
+  documentUrl: string;
 }
 
 export interface Link {
@@ -72,6 +73,9 @@ export interface Surcharge {
   id: number;
   type: string; // Type of surcharge, e.g., "Tax" or "Service Fee"
   amount: number; // Amount of the surcharge
+  surchargeTag?: any;
+  surchargeTypeValue?: any;
+  surchargeType?: any;
 }
 
 export interface Tag {
