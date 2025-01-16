@@ -34,9 +34,10 @@ export async function generateQRWithLogo(
   await QRCode.toCanvas(canvas, url, {
     errorCorrectionLevel: "H", // Use high error correction for logo overlay
     margin: 1,
+    maskPattern: 1,
     width: 200,
     color: {
-      dark: "#0765FF",
+      dark: "#0536A3",
       light: "#FFFFFF",
     },
   });

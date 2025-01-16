@@ -6,6 +6,8 @@ import { registerFonts } from "@/lib/pdfStyles";
 import { generateQRWithLogo } from "@/lib/utils";
 import { Invoice } from "@/lib/types";
 
+export const dynamic = "force-dynamic";
+
 export const GET = async (
   request: NextRequest,
   { params }: { params: Promise<{ invoiceId: string }> }
@@ -15,11 +17,12 @@ export const GET = async (
 
   const invoiceId = (await params).invoiceId;
   const token = searchParams.get("token");
+  const otp = searchParams.get("otp");
 
   const res = await api.get(`/invoice/customer/${invoiceId}`, {
     params: {
       token: token || "z2KTbouczuVwLkIAMXwqYXwABWCFx2gTsFeczzbb6yc",
-      otp: "123456",
+      otp: otp || "123456",
     },
   });
 
@@ -37,9 +40,9 @@ export const GET = async (
     );
   }
 
-  console.log(res.status, res.data);
-
   const invoiceDetails = res.data?.data as Invoice;
+
+  console.log(invoiceDetails.items);
 
   const qrCodeDataUrl = await generateQRWithLogo(invoiceDetails.link);
 
