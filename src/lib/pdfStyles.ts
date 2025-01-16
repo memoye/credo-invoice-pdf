@@ -59,7 +59,7 @@ export const invoiceStyles = StyleSheet.create({
   },
   headingTitle: {
     color: "#0765FF",
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     fontSize: 18,
     fontWeight: 600,
     marginTop: 18,
@@ -69,7 +69,7 @@ export const invoiceStyles = StyleSheet.create({
     height: 70,
   },
   meta: {
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     fontSize: 10,
     lineHeight: 1.3,
     display: "flex",
@@ -120,7 +120,7 @@ export const invoiceStyles = StyleSheet.create({
   tableHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     fontWeight: 600,
     fontSize: 10,
     color: "#344054",
@@ -191,7 +191,7 @@ export const invoiceStyles = StyleSheet.create({
     gap: 5,
   },
   currency: {
-    // fontFamily: "BellotaText",
+    fontFamily: "BellotaText",
     fontSize: 10,
   },
   bottomLeft: {
@@ -201,7 +201,7 @@ export const invoiceStyles = StyleSheet.create({
     paddingTop: 5,
   },
   link: {
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     fontSize: 10,
     textDecoration: "none",
     lineHeight: 1.3,
@@ -236,7 +236,7 @@ export const invoiceStyles = StyleSheet.create({
   },
   summaryItem: {
     color: "#667085",
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     fontSize: 10,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -265,13 +265,13 @@ export const invoiceStyles = StyleSheet.create({
 
 export const receiptStyles = StyleSheet.create({
   page: {
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     backgroundColor: "#F6F6F6", //"#F9FAFB"
     justifyContent: "center",
     alignItems: "center",
   },
   main: {
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     width: 450,
     borderRadius: 8,
     backgroundColor: "#FFFFFF",
@@ -338,7 +338,7 @@ export const receiptStyles = StyleSheet.create({
     justifyContent: "space-between",
   },
   businessName: {
-    // fontFamily: "BellotaText",
+    fontFamily: "BellotaText",
     color: "#344054",
     fontSize: 11,
   },
@@ -347,7 +347,7 @@ export const receiptStyles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   amount: {
-    // fontFamily: "Monda",
+    fontFamily: "Monda",
     fontSize: 18,
     fontWeight: 600,
     textAlign: "right",
@@ -362,7 +362,7 @@ export const receiptStyles = StyleSheet.create({
   infoItem: {
     flexDirection: "row",
     justifyContent: "space-between",
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     alignItems: "center",
   },
   infoLabel: {
@@ -373,7 +373,7 @@ export const receiptStyles = StyleSheet.create({
     fontWeight: 600,
   },
   currency: {
-    // fontFamily: "Monda",
+    fontFamily: "Monda",
     fontSize: 12,
     fontWeight: 600,
   },
@@ -392,7 +392,7 @@ export const receiptStyles = StyleSheet.create({
     gap: 4,
   },
   website: {
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     fontSize: 11,
     textDecoration: "none",
     fontWeight: "normal",
@@ -417,7 +417,7 @@ export const installmentTableStyles = StyleSheet.create({
   },
   headingTitle: {
     color: "#0765FF",
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     fontSize: 18,
     fontWeight: 600,
   },
@@ -429,7 +429,7 @@ export const installmentTableStyles = StyleSheet.create({
   tableHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     fontWeight: 600,
     fontSize: 14,
     color: "#344054",
@@ -467,12 +467,12 @@ export const installmentTableStyles = StyleSheet.create({
     paddingLeft: 10,
   },
   cellText: {
-    // fontFamily: "Outfit",
+    fontFamily: "Outfit",
     fontSize: 13,
     fontWeight: 400,
   },
   currency: {
-    // fontFamily: "BellotaText",
+    fontFamily: "BellotaText",
     fontSize: 14,
   },
 });

@@ -7,6 +7,7 @@ export const GET = async () => {
   registerFonts();
 
   const pdf = await renderToBuffer(<InvoicePDF selectedCustomerIndex={0} />);
+
   return new Response(pdf, {
     headers: {
       "Content-Type": "application/pdf",
