@@ -42,7 +42,10 @@ export const GET = async (
 
   const invoiceDetails = res.data?.data as Invoice;
 
-  const qrCodeDataUrl = await generateQRWithLogo(invoiceDetails.link);
+  const qrCodeDataUrl = await generateQRWithLogo(
+    // invoiceDetails.link
+    "https://invoice.credodemo.com" + invoiceDetails?.invoiceNumber
+  );
 
   const selectedCustomerIndex =
     Math.max(

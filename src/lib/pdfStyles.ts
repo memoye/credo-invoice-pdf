@@ -67,6 +67,7 @@ export const invoiceStyles = StyleSheet.create({
   logo: {
     width: 70,
     height: 70,
+    objectFit: "contain",
   },
   meta: {
     fontFamily: "Outfit",

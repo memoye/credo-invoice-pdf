@@ -16,26 +16,23 @@ export const scaleValue = (
       : Math.min(defaultViewportWidth, maxViewportWidth); // Use default width during SSR
   return value * (viewportWidth / idealViewportWidth);
 };
-//
+
 // export const scaleValue = (value: number) => {
 //     const viewportWidth = Math.min(window.innerWidth, maxViewportWidth);
 //     return value * (viewportWidth / idealViewportWidth);
 // };
 
-export async function generateQRWithLogo(
-  url: string
-  // logoPath: string
-): Promise<string> {
+export async function generateQRWithLogo(url: string): Promise<string> {
   // Create a canvas
   const canvas = new Canvas(200, 200);
   const ctx = canvas.getContext("2d");
 
   // Generate QR code with a bit more space in center
   await QRCode.toCanvas(canvas, url, {
-    errorCorrectionLevel: "H",
+    errorCorrectionLevel: "Q",
     margin: 1,
     maskPattern: 7,
-    width: 200,
+    width: 100,
     color: {
       dark: "#0536A3",
       light: "#FFFFFF",
