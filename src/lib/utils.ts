@@ -105,15 +105,16 @@ export function calculateTax(
   const originalPrice =
     values?.items[itemIndex].qty * values?.items[itemIndex].unitPrice;
 
-  const discountTypeValue = values?.items[itemIndex].discountTypeValue;
-  // Default discount
-  const discountedPrice = originalPrice - calculateDiscount(values, itemIndex);
+  // const discountTypeValue = values?.items[itemIndex].discountTypeValue;
+  // // Default discount
+  // const discountedPrice = originalPrice - calculateDiscount(values, itemIndex);
 
-  // Ensure the discounted price is not negative
-  const finalPrice = Math.max(
-    discountTypeValue ? discountedPrice : originalPrice,
-    0
-  );
+  // // Ensure the discounted price is not negative
+  // const finalPrice = Math.max(
+  //   discountTypeValue ? discountedPrice : originalPrice,
+  //   0
+  // );
+  const finalPrice = Math.max(originalPrice, 0);
 
   // Calculate the tax based on the discounted price
   let tax;

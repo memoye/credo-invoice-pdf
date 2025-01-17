@@ -9,6 +9,7 @@ import {
 } from "@react-pdf/renderer";
 import dateFormat from "dateformat";
 import {
+  DiscountIcon,
   DocumentIcon,
   LinkIcon,
   PoweredByCredoLogo,
@@ -27,6 +28,7 @@ import {
   formatNumber,
   formatCurrency,
   invoiceStatusReducer,
+  calculateDiscount,
 } from "../lib/utils";
 
 export type InvoicePDFProps = {
@@ -47,6 +49,13 @@ export const InvoicePDF = ({
     lineItemsTotalValues?.totalLineItems -
       lineItemsTotalValues?.totalDiscounts +
       lineItemsTotalValues?.totalSurcharges || 0;
+
+  invoiceDetails?.items?.forEach((item) =>
+    console.log(
+      { surcharges: item.surcharges },
+      { discount: item.discountCharge }
+    )
+  );
 
   return (
     <Document
@@ -275,6 +284,32 @@ export const InvoicePDF = ({
                             </Link>
                           </View>
                         ))}
+                      </View>
+                    )}
+
+                    {item.discountTypeValue && (
+                      <View style={invoiceStyles.badgesWrapper}>
+                        <View style={invoiceStyles.badge}>
+                          <DiscountIcon width={12} height={12} />
+                          <Text>
+                            {item.discountTag} ({item?.discountTypeValue}
+                            {item?.discountType === 0 && "%"}) ={" "}
+                            <Tspan
+                              // @ts-expect-error property does not exist
+                              style={invoiceStyles.currency}
+                            >
+                              {item.discountType === 1
+                                ? formatCurrency(
+                                    item?.discountTypeValue,
+                                    invoiceDetails.currency
+                                  )
+                                : formatCurrency(
+                                    calculateDiscount(invoiceDetails, idx),
+                                    invoiceDetails.currency
+                                  )}
+                            </Tspan>
+                          </Text>
+                        </View>
                       </View>
                     )}
                   </View>
