@@ -32,9 +32,9 @@ export async function generateQRWithLogo(
 
   // Generate QR code with a bit more space in center
   await QRCode.toCanvas(canvas, url, {
-    errorCorrectionLevel: "H", // Use high error correction for logo overlay
+    errorCorrectionLevel: "H",
     margin: 1,
-    maskPattern: 1,
+    maskPattern: 7,
     width: 200,
     color: {
       dark: "#0536A3",

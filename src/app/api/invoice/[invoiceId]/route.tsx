@@ -42,8 +42,6 @@ export const GET = async (
 
   const invoiceDetails = res.data?.data as Invoice;
 
-  console.log(invoiceDetails.items);
-
   const qrCodeDataUrl = await generateQRWithLogo(invoiceDetails.link);
 
   const selectedCustomerIndex =
