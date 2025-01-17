@@ -186,7 +186,7 @@ export const InvoicePDF = ({
                 <Text>Quantity</Text>
               </View>
               <View style={invoiceStyles.priceCell}>
-                <Text>Price</Text>
+                <Text>Unit Price</Text>
               </View>
               <View style={invoiceStyles.lineTotalCell}>
                 <Text>Line Total</Text>
