@@ -20,7 +20,7 @@ export const SurchargeIcon = ({ width, height, ...props }: IconProps) => (
     width={width ?? 12}
     height={height ?? 12}
     viewBox="0 0 20 21"
-    fill={"white"}
+    fill="#ECF2FF"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
@@ -353,7 +353,7 @@ export const DiscountIcon = ({ width, height, ...props }: IconProps) => (
     width={width || 15}
     height={height || 11}
     viewBox="0 0 20 21"
-    fill="white"
+    fill="#ECF2FF"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
