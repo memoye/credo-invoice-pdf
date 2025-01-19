@@ -43,7 +43,6 @@ export const GET = async (
   const invoiceDetails = res.data?.data as Invoice;
 
   const qrCodeDataUrl = await generateQRWithLogo(invoiceDetails.link);
-  //
 
   const selectedCustomerIndex =
     Math.max(
