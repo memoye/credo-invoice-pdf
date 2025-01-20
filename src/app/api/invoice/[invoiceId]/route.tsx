@@ -41,8 +41,8 @@ export const GET = async (
   }
 
   const invoiceDetails = res.data?.data as Invoice;
-  const invoiceLink = invoiceDetails?.link?.includes("token?")
-    ? invoiceDetails.link.split("token?")[0]
+  const invoiceLink = invoiceDetails?.link?.includes("token=")
+    ? invoiceDetails.link.split("token=")[0]
     : invoiceDetails.link;
   const qrCodeDataUrl = await generateQRWithLogo(invoiceLink);
 
