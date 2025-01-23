@@ -145,7 +145,7 @@ export const TransactionInvoicePDF = ({
           />
 
           <ItemsTable
-            title={"Payer Information"}
+            title={"Payment Details"}
             items={[
               {
                 label: "Amount",
