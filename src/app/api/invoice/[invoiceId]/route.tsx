@@ -16,13 +16,16 @@ export const GET = async (
   const searchParams = request.nextUrl.searchParams;
 
   const invoiceId = (await params).invoiceId;
-  const token = searchParams.get("token");
-  const otp = searchParams.get("otp");
+  const environment = searchParams.get("env");
+
+  const demoUrl = process.env.DEMO_BASE_URL;
+  const liveUrl = process.env.LIVE_BASE_URL;
 
   const res = await api.get(`/invoice/customer/${invoiceId}`, {
+    baseURL: environment === "live" ? demoUrl : liveUrl,
     params: {
-      token: token || "z2KTbouczuVwLkIAMXwqYXwABWCFx2gTsFeczzbb6yc",
-      otp: otp || "123456",
+      token: "z2KTbouczuVwLkIAMXwqYXwABWCFx2gTsFeczzbb6yc",
+      otp: "123456",
     },
   });
 

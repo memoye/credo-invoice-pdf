@@ -150,3 +150,25 @@ export interface MerchantInfo {
   firstName: string;
   lastName: string;
 }
+
+export interface TransactionDetails {
+  id: number;
+  channels: Array<string> | any;
+  status: number;
+  redirectUrl: string;
+  debtAmount: number | any;
+  currency: string | any;
+  payerInfo: string;
+  transFee: number | any;
+  logo?: string;
+  credoTransRef?: string | any;
+  pinRequired?: boolean;
+  payerName?: string;
+  enableCancelButton?: number;
+  gateway?: string;
+  businessName?: string;
+  payerPhoneNumber?: string;
+  crn?: string;
+  paymentDescription?: string;
+  businessTransRef?: string;
+}
