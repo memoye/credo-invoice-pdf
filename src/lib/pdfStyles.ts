@@ -1,8 +1,5 @@
 import { Font, StyleSheet } from "@react-pdf/renderer";
 import path from "path";
-// import path from "path";
-
-// console.log(path.join(process.cwd(), "public/fonts/Monda-SemiBold.ttf"));
 
 export function registerFonts() {
   Font.register({
