@@ -22,11 +22,11 @@ export const GET = async (
   const liveUrl = process.env.LIVE_BASE_URL;
 
   const res = await api.get(`/invoice/customer/${invoiceId}`, {
-    baseURL: environment === "live" ? demoUrl : liveUrl,
     params: {
       token: "z2KTbouczuVwLkIAMXwqYXwABWCFx2gTsFeczzbb6yc",
       otp: "123456",
     },
+    baseURL: environment === "live" ? liveUrl : demoUrl,
   });
 
   if (res.status === 404) {
