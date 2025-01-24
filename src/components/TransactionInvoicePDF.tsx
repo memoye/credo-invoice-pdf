@@ -160,10 +160,6 @@ export const TransactionInvoicePDF = ({
                 value: transAmountInWords.toWords() || "",
               },
               {
-                label: "Payment Description",
-                value: transactionDetails.paymentDescription || "",
-              },
-              {
                 label: "Merchant Ref.",
                 value: transactionDetails.businessTransRef || "",
               },
