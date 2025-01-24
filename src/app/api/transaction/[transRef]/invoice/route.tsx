@@ -33,7 +33,7 @@ export const GET = async (
       return new Response(pdf, {
         headers: {
           "Content-Type": "application/pdf",
-          // "Content-disposition": `attachment;filename="myDocument.pdf"`, // this triggers download
+          "Content-disposition": `attachment;filename="${transRef}-Invoice.pdf"`, // this triggers download
         },
         status: 200,
       });
